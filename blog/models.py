@@ -17,3 +17,17 @@ class Post(models.Model):
 
     def __str__(self):
         return self.title
+
+class Test_post(models.Model):
+    author = models.ForeignKey('auth.User')
+    text = models.TextField()
+    created_date = models.DateTimeField(
+        default=timezone.now)
+    published_date = models.DateTimeField(
+        blank=True, null=True)
+
+    def save_test(self):
+        self.save()
+
+    def __str__(self):
+        return self.text
